@@ -1,7 +1,7 @@
 // creates app,
 // The ngRoute module provides routing and deeplinking services and directives for angular apps.
 var myApp = angular.module('myApp',
- ['ngRoute', 'firebase'])
+ ['ngRoute', 'firebase', 'ngResource'])
   .constant('FIREBASE_URL', 'https://angreg1234.firebaseIO.com/'); // 2 constats that we use through out the app
 
 
@@ -31,7 +31,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
     }).
     when('/success', {
       templateUrl: 'views/success.html',
-      controller: 'SuccessController',
+      controller: 'imageCtrl',
       resolve: {
         currentAuth: function(Authentication) {
           return Authentication.requireAuth();
