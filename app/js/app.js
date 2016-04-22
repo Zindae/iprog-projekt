@@ -1,7 +1,8 @@
-// creates app,
-// The ngRoute module provides routing and deeplinking services and directives for angular apps.
 var myApp = angular.module('myApp',
- ['ngRoute', 'firebase', 'ngResource'])
+ ['ngRoute', 'firebase', 'ngResource', 'angularGrid'])
+ 
+ // 'ngMaterial' - förstör GRIDfältet, används av md-forms
+
   .constant('FIREBASE_URL', 'https://angreg1234.firebaseIO.com/'); // 2 constats that we use through out the app
 
 
@@ -17,9 +18,7 @@ myApp.run(['$rootScope', '$location',
   }]); //run
 
 
-// configure view paths; routes...
-// works like a switch statement with a default 
-myApp.config(['$routeProvider', function($routeProvider) {
+  myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
     when('/login', {
       templateUrl: 'views/login.html', // use this view

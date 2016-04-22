@@ -1,13 +1,39 @@
-myApp.controller('imageCtrl', ['$scope', 'albumGramService', function($scope, albumGramService) {
-	$scope.images = albumGramService.flickrImg.get();
-}]);
+myApp.controller('imageCtrl', function($scope, $http, $q) {
+	
+	var vm = this;
+	$scope.card = {};
+	$scope.card.title = 'test';
+	vm.page = 0;
+	vm.shots = [];
+	vm.loadingMore = false;
 
-		// $.each(data.items, function(i,item){
-			 // var image = (item.media.m).replace("_m.jpg", "_d.jpg");
-	   // var title = item.title;
-	   // if(i<21){
-				// $("<div>")
-		  // .attr({"style":"background-image: url("+image+")","class":"flickr-image", "data-title":title})
-		   // .appendTo(".flickr").wrap("<a href='" + item.link + "'></a>");
-				// }    
-		// });
+	vm.loadMoreShots = function() {
+		if(vm.loadingMore) return;
+		vm.page++;
+		// var deferred = $q.defer();
+		vm.loadingMore = true;
+		var promise = $http.get('https://api.dribbble.com/v1/shots/?per_page=24&page='+vm.page+'&access_token=3df6bcfc60b54b131ac04f132af615e60b0bd0b1cadca89a4761cd5d125d608f');
+		promise.then(function(data) {
+			
+			var shotsTmp = angular.copy(vm.shots);
+			shotsTmp = shotsTmp.concat(data.data);
+			vm.shots = shotsTmp;
+			vm.loadingMore = false;
+			
+		}, function(){
+			vm.loadingMore = false;
+		});
+		return promise;
+		
+	};
+
+	vm.loadMoreShots();
+
+	// $scope.pop = function(x) {
+		// console.log('Klickat på bild!', x);
+		// // ::shot.images.normal, finns en "hd" version, popup med bilden & knappar
+	// };
+  
+
+});
+myApp.filter('unsafe', function($sce) { return $sce.trustAsHtml; });

@@ -1,1 +1,0 @@
-var albumGram = angular.module('albumGram', ['ngRoute']);

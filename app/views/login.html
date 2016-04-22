@@ -18,19 +18,32 @@
     </div> <!-- form heading -->
 
     <fieldset>
-      
+	
       <input type="email" name="email" placeholder="Email" ng-model="user.email" ng-required="true">
-      
-      <p class="error validationerror" 
-      ng-show="myform.email.$invalid && myform.email.$touched">
-      Must be a valid email</p>
-      
+	  
+	  <!-- MD-INPUT, KRÄVER ngMaterial som strular med GRID -->
+	  
+<!-- 	<md-input-container>
+		<label for="Email">Email</label>
+		<input type="text" id="testInput"
+		   ng-model="user.email" ng-required="true" md-autofocus>
+	</md-input-container> -->
+	
+		<p class="error validationerror" 
+			ng-show="myform.email.$invalid && myform.email.$touched">
+			Must be a valid email</p>
+	  	  
       <input type="password" name="password" placeholder="Password" ng-model="user.password" ng-required="true">
+	  
+<!-- 	<md-input-container>
+		<label for="Password">Password</label>
+		<input type="text" id="passwordInput"
+			ng-model="user.password" ng-required="true" md-autofocus>
+	</md-input-container> -->
       
-      <p class="error validationerror" 
-      ng-show="myform.password.$invalid && myform.email.$touched">
-      Password is required</p>
-
+		<p class="error validationerror" 
+			ng-show="myform.password.$invalid && myform.password.$touched">
+			Password is required</p>
     </fieldset> <!-- form elements -->
 
     <button type="submit" class="btn" ng-disabled="myform.$invalid">Login</button>
