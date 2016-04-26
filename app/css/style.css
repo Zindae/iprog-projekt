@@ -319,9 +319,9 @@ a:focus {
 }
 
 .flickr-image {
-  width: 24%;
+  width: 100%;
   margin: 1% 0.5%;
-  height: 100px;
+  height: 100%;
   display: inline-block;
   background-position:center center;
   background-size: cover;

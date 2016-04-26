@@ -41,6 +41,10 @@ myApp.run(['$rootScope', '$location',
       templateUrl: 'views/home.html',
       controller: 'imageCtrl'
     }).
+	when('/settings', {
+      templateUrl: 'views/settings.html',
+      controller: 'settingsCtrl'
+    }).
     otherwise({
       redirectTo: '/login'
     });

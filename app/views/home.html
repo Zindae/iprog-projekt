@@ -11,11 +11,13 @@
              ag-infinite-scroll="vm.loadMoreShots()"
              >
           <div class="card" ng-repeat="shot in vm.shots track by $index">
-            <div class="img" style="background-image: url({{::shot.images.normal}});"></div>
-            <div class="inside">
-              <h3>{{::shot.title}}</h3>
+		  <!-- style="background-image: url({{::shot.images.normal}});" -->
+            <!-- <div class="img"></div> -->
+<!--             <div class="inside"> -->
+              <!-- <h3>{{::shot.title}}</h3> -->
+			  <img class="flickr-image" ng-src="https://farm{{shot.farm-id}}.staticflickr.com/{{shot.server-id}}/{{shot.id}}_{{shot.secret}}.jpg"/>
               <!-- <div class="description" ng-bind-html="::shot.description | unsafe"></div> -->
-            </div>
+            <!-- </div> -->
           </div>
         </div>
         <div class="loading-more-indicator" ng-show="vm.loadingMore">
